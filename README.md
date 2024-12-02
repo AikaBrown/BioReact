@@ -24,34 +24,39 @@ This repository is ideal for students, researchers, and engineers working in bio
 
 ---
 
-## How It Works
+Aquí tienes el contenido reescrito usando sintaxis compatible con MathJax y GitHub para renderizar correctamente las expresiones matemáticas:
+
+---
+
+### How It Works
 
 The program solves the following equations for a CSTR:
 
-1. **Biomass balance:**
-   \[
-   \frac{dX}{dt} = X \cdot (\mu - D)
-   \]
+**1. Biomass balance:**
+$$
+\frac{dX}{dt} = X \cdot (\mu - D)
+$$
 
-2. **Substrate balance:**
-   \[
-   \frac{dS}{dt} = D \cdot (S_f - S) - \frac{\mu \cdot X}{Y}
-   \]
+**2. Substrate balance:**
+$$
+\frac{dS}{dt} = D \cdot (S_f - S) - \frac{\mu \cdot X}{Y}
+$$
 
-3. **Growth rate (Monod model):**
-   \[
-   \mu = \frac{\mu_{max} \cdot S}{K_s + S}
-   \]
+**3. Growth rate (Monod model):**
+$$
+\mu = \frac{\mu_{\text{max}} \cdot S}{K_s + S}
+$$
 
 Where:
-- \( X \): Biomass concentration (g/L)
-- \( S \): Substrate concentration (g/L)
-- \( D \): Dilution rate (\( F / V \)) (1/h)
-- \( S_f \): Feed substrate concentration (g/L)
-- \( \mu \): Specific growth rate (1/h)
-- \( Y \): Biomass yield coefficient (g biomass/g substrate)
-- \( \mu_{max} \): Maximum specific growth rate (1/h)
-- \( K_s \): Substrate affinity constant (g/L)
+
+- $X$: Biomass concentration (g/L)
+- $S$: Substrate concentration (g/L)
+- $D$: Dilution rate ($F / V$) (1/h)
+- $S_f$: Feed substrate concentration (g/L)
+- $\mu$: Specific growth rate (1/h)
+- $Y$: Biomass yield coefficient (g biomass/g substrate)
+- $\mu_{\text{max}}$: Maximum specific growth rate (1/h)
+- $K_s$: Substrate affinity constant (g/L)
 
 ---
 
