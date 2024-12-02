@@ -58,6 +58,7 @@ Where:
 - $\mu_{\text{max}}$: Maximum specific growth rate (1/h)
 - $K_s$: Substrate affinity constant (g/L)
 
+
 ---
 
 ## Getting Started
