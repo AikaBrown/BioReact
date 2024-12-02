@@ -1,77 +1,73 @@
-Aquí está el README completo actualizado con las fórmulas matemáticas reescritas en formato MathJax compatible con GitHub:
-
----
-
 # BioReact: Dynamic Simulation of a Continuous Stirred Tank Bioreactor (CSTR)
 
-BioReact is a Python-based simulation tool for modeling the dynamic behavior of a Continuous Stirred Tank Bioreactor (CSTR). It uses the fourth-order Runge-Kutta method to solve differential equations for biomass and substrate balances, incorporating Monod kinetics for microbial growth.
+## Overview
+**BioReact** is a Python-based simulation tool designed to model the dynamic behavior of a Continuous Stirred Tank Bioreactor (CSTR). It enables users to analyze the evolution of biomass, substrate, and growth rates over time using the fourth-order Runge-Kutta method. The tool is particularly suited for researchers, students, and engineers in the fields of biotechnology and bioengineering.
 
-This repository is ideal for students, researchers, and engineers working in biotechnology, bioengineering, or process control.
+### Features
+1. **Dynamic Simulation**:
+   - Models the concentrations of biomass and substrate over time.
+   - Tracks specific growth rate (\( \mu \)) dynamically using the Monod model.
 
----
+2. **Visualization**:
+   - Automatically generates plots for:
+     - Biomass vs. Substrate (Phase Diagram).
+     - Biomass and Substrate vs. Time.
+     - Growth Rate vs. Time.
+   - Saves all plots in a dedicated `figures` directory with consistent dimensions and transparent backgrounds.
 
-## Features
+3. **Customizable Parameters**:
+   - Allows users to specify reactor conditions, microbial kinetics, and simulation parameters to suit different scenarios.
 
-- **Dynamic Simulation:**
-  - Simulates biomass and substrate concentrations over time.
-  - Tracks the specific growth rate ($\mu$) dynamically.
-  
-- **Phase Diagram:**
-  - Generates a plot of biomass vs substrate concentration.
-
-- **Growth and Consumption Analysis:**
-  - Plots biomass and substrate concentrations as functions of time.
-  - Visualizes the specific growth rate over time.
-
-- **Customizable Parameters:**
-  - Easily adjust reactor conditions, microbial kinetics, and simulation parameters.
+4. **Examples of Generated Visualizations**:
+   - **Biomass vs Substrate (Phase Diagram)**:
+     ![Biomass vs Substrate](figures/biomass_vs_substrate.png)
+   - **Biomass and Substrate vs Time**:
+     ![Biomass and Substrate vs Time](figures/biomass_and_substrate_vs_time.png)
+   - **Growth Rate vs Time**:
+     ![Growth Rate vs Time](figures/growth_rate_vs_time.png)
 
 ---
 
 ## How It Works
 
-The program solves the following equations for a CSTR:
+The simulation is based on the following equations:
 
-**1. Biomass balance:**
-$$
-\frac{dX}{dt} = X \cdot (\mu - D)
-$$
+1. **Biomass Balance**:
+   \[
+   \frac{dX}{dt} = X \cdot (\mu - D)
+   \]
 
-**2. Substrate balance:**
-$$
-\frac{dS}{dt} = D \cdot (S_f - S) - \frac{\mu \cdot X}{Y}
-$$
+2. **Substrate Balance**:
+   \[
+   \frac{dS}{dt} = D \cdot (S_f - S) - \frac{\mu \cdot X}{Y}
+   \]
 
-**3. Growth rate (Monod model):**
-$$
-\mu = \frac{\mu_{\text{max}} \cdot S}{K_s + S}
-$$
+3. **Growth Rate (Monod Model)**:
+   \[
+   \mu = \frac{\mu_{\text{max}} \cdot S}{K_s + S}
+   \]
 
-Where:
-
-- $X$: Biomass concentration (g/L)
-- $S$: Substrate concentration (g/L)
-- $D$: Dilution rate ($F / V$) (1/h)
-- $S_f$: Feed substrate concentration (g/L)
-- $\mu$: Specific growth rate (1/h)
-- $Y$: Biomass yield coefficient (g biomass/g substrate)
-- $\mu_{\text{max}}$: Maximum specific growth rate (1/h)
-- $K_s$: Substrate affinity constant (g/L)
-
+### Parameters
+- \( X \): Biomass concentration (g/L).
+- \( S \): Substrate concentration (g/L).
+- \( D \): Dilution rate (\( F / V \), 1/h).
+- \( S_f \): Feed substrate concentration (g/L).
+- \( \mu \): Specific growth rate (1/h).
+- \( Y \): Biomass yield coefficient (g biomass/g substrate).
+- \( \mu_{\text{max}} \): Maximum specific growth rate (1/h).
+- \( K_s \): Substrate affinity constant (g/L).
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
+Ensure you have Python 3.8+ installed along with the following libraries:
+- `numpy`
+- `pandas`
+- `matplotlib`
 
-- Python 3.8 or later
-- Libraries:
-  - `numpy`
-  - `pandas`
-  - `matplotlib`
-
-Install the required libraries using:
+Install the required libraries using pip:
 ```bash
 pip install numpy pandas matplotlib
 ```
@@ -86,25 +82,23 @@ pip install numpy pandas matplotlib
    cd BioReact
    ```
 
-2. Import the functions in your script or Jupyter Notebook:
+2. Run the simulation:
+   Define your reactor parameters and execute the simulation. Example script:
    ```python
    from cstr_simulation import runge_kutta_4, plot_biomass_vs_substrate, plot_biomass_and_substrate_vs_time, plot_growth_rate_vs_time
-   ```
 
-3. Define your parameters and run the simulation:
-   ```python
-   # Example parameters
-   initial_time = 0.0          # Initial time (hours)
-   initial_biomass = 0.1       # Initial biomass concentration (g/L)
-   initial_substrate = 20.0    # Initial substrate concentration (g/L)
-   yield_coefficient = 0.5     # Biomass yield coefficient (g biomass/g substrate)
-   step_size = 0.1             # Simulation step size (hours)
-   mu_max = 0.4                # Maximum specific growth rate (1/h)
-   Ks = 1.0                    # Substrate affinity constant (g/L)
-   reactor_volume = 1.0        # Reactor volume (L)
-   flow_rate = 0.1             # Feed flow rate (L/h)
-   substrate_feed = 50.0       # Substrate concentration in feed (g/L)
-   simulation_steps = 100      # Number of steps to simulate
+   # Simulation parameters
+   initial_time = 0.0
+   initial_biomass = 0.1
+   initial_substrate = 20.0
+   yield_coefficient = 0.5
+   step_size = 0.1
+   mu_max = 0.4
+   Ks = 1.0
+   reactor_volume = 1.0
+   flow_rate = 0.1
+   substrate_feed = 50.0
+   simulation_steps = 100
 
    # Run simulation
    results = runge_kutta_4(
@@ -121,62 +115,64 @@ pip install numpy pandas matplotlib
        steps=simulation_steps,
    )
 
-   # Display results
-   print(results.head())
-
    # Generate plots
    plot_biomass_vs_substrate(results)
    plot_biomass_and_substrate_vs_time(results)
    plot_growth_rate_vs_time(results)
    ```
 
----
-
-### Example Output
-
-1. **Phase Diagram:**
-   Biomass vs Substrate Concentration.
-
-   ![Phase Diagram](images/phase_diagram.png)
-
-2. **Biomass and Substrate vs Time:**
-   ![Biomass and Substrate vs Time](images/biomass_substrate_time.png)
-
-3. **Growth Rate vs Time:**
-   ![Growth Rate vs Time](images/growth_rate_time.png)
+3. Review the results:
+   - The simulation outputs a DataFrame with the following columns:
+     - `Time (h)`
+     - `Biomass (g/L)`
+     - `Substrate (g/L)`
+     - `Growth Rate (1/h)`
+   - The plots are saved in the `figures` directory.
 
 ---
 
 ## Repository Structure
+The repository is organized as follows:
 
-```
+```plaintext
 BioReact/
 │
 ├── cstr_simulation.py       # Core simulation and plotting functions
 ├── examples/
 │   ├── example_run.py       # Example script demonstrating usage
 │   └── example_notebook.ipynb # Example Jupyter Notebook
-├── images/                  # Folder for example plot images
-└── README.md                # Documentation
+├── figures/                 # Contains generated plots
+│   ├── biomass_vs_substrate.png
+│   ├── biomass_and_substrate_vs_time.png
+│   └── growth_rate_vs_time.png
+├── README.md                # Documentation
+└── LICENSE                  # License for the repository
 ```
 
 ---
 
-## Contributing
+## Future Development
+Planned features include:
+- Advanced visualizations for parameter sensitivity analysis.
+- Enhanced support for batch and fed-batch reactor models.
+- Integration with experimental data for validation.
 
-Contributions are welcome! If you have ideas for improvements or additional features, feel free to fork the repository and submit a pull request.
+---
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
+## Authors
+**Emiliano Balderas Ramírez**  
+PhD Student at the Instituto de Biotecnología, UNAM  
+Email: [ebalderas@live.com.mx](mailto:ebalderas@live.com.mx)  
+Phone: +52 2221075693  
+
+**Dr. Octavio Tonatiuh Ramírez Reivich**  
+Principal Investigator, Instituto de Biotecnología, UNAM  
+Email: [tonatiuh.ramirez@ibt.unam.mx](mailto:tonatiuh.ramirez@ibt.unam.mx)  
 
 ---
 
 ## License
-
-This project is licensed under the MIT License. See `LICENSE` for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
@@ -186,4 +182,3 @@ For questions or suggestions, feel free to contact:
 PhD Student at the Instituto de Biotecnología, UNAM  
 Email: [ebalderas@live.com.mx](mailto:ebalderas@live.com.mx)  
 Phone: +52 2221075693  
-
