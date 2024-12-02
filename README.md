@@ -33,19 +33,19 @@ Aquí tienes el contenido reescrito usando sintaxis compatible con MathJax y Git
 The program solves the following equations for a CSTR:
 
 **1. Biomass balance:**
-$$
+$
 \frac{dX}{dt} = X \cdot (\mu - D)
-$$
+$
 
 **2. Substrate balance:**
-$$
+$
 \frac{dS}{dt} = D \cdot (S_f - S) - \frac{\mu \cdot X}{Y}
-$$
+$
 
 **3. Growth rate (Monod model):**
-$$
+$
 \mu = \frac{\mu_{\text{max}} \cdot S}{K_s + S}
-$$
+$
 
 Where:
 
